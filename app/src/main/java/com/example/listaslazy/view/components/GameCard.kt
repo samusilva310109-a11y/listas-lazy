@@ -1,5 +1,6 @@
 package com.example.listaslazy.view.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,8 +19,10 @@ import com.example.listaslazy.model.Game
 
 @Composable
 fun GameCard(game: Game) {
-    Card(modifier = Modifier.padding(bottom = 8.dp)) {
-        Row( modifier = Modifier.fillMaxWidth(),
+    Card(modifier = Modifier.padding(end = 8.dp, bottom = 8.dp)) {
+        Row( modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.LightGray),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -30,13 +33,15 @@ fun GameCard(game: Game) {
                 Text(
                     text = game.title,
                     fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
                 )
 
                 Text(
                     text = game.studio,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal
+                    fontWeight = FontWeight.Normal,
+                    color = Color.Black
                 )
             }
 
