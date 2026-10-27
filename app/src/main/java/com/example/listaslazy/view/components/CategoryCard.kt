@@ -3,7 +3,6 @@ package com.example.listaslazy.view.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -14,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.listaslazy.model.Category
@@ -25,7 +26,7 @@ fun CategorCard(category: Category) {
 
     Card(
         modifier = Modifier
-            .size(115.dp)
+            .size(90.dp)
             .padding(end = 2.dp)
     ) {
         Column(
@@ -34,17 +35,17 @@ fun CategorCard(category: Category) {
             verticalArrangement = Arrangement.Center
         ) {
             Icon(
-                modifier = Modifier.size(30.dp),
+                modifier = Modifier.size(25.dp),
                 painter = icon,
                 tint = Color.Black,
                 contentDescription = category.name,
             )
 
-            Spacer(Modifier.size(10.dp))
-
             Text(
                 text = category.name,
-                fontSize = 16.5.sp,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
                 color = Color.Black
             )
         }
