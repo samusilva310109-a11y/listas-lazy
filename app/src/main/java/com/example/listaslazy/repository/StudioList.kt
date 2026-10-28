@@ -8,31 +8,31 @@ fun getAllStudios(): List<Studio>{
         Studio(
             id = 1,
             name = "SEGA",
-            urlImage = "https://images.seeklogo.com/logo-png/12/1/sega-logo-png_seeklogo-124470.png"
+            urlImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVCO_pPO_WpmGqm2Q7CBvMmdZRP9w49ZojLXfQBMe-7BBvQQUxVUHISr9j&s=10"
         ),
 
         Studio(
             id = 2,
             name = "Mojang Studios",
-            urlImage = "https://images.seeklogo.com/logo-png/40/1/mojang-logo-png_seeklogo-405297.png"
+            urlImage = "https://logodownload.org/wp-content/uploads/2014/02/mojang-logo-0.png"
         ),
 
         Studio(
             id = 3,
             name = "Santa Monica Studio",
-            urlImage = "https://images.seeklogo.com/logo-png/45/1/santa-monica-studio-logo-png_seeklogo-458298.png"
+            urlImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ66S8H3upfitnzJc3S4kxc5oyxT7icsh3-58yCgd26LA&s=10"
         ),
 
         Studio(
             id = 4,
             name = "Nintendo",
-            urlImage = "https://images.seeklogo.com/logo-png/9/1/nintendo-logo-png_seeklogo-99658.png"
+            urlImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtxbeQzMOkZEE0Tv3kaMSrg0S7lOJadNLzGj8w7ZeGPS-mbE26dIjEGGo&s=10"
         ),
 
         Studio(
             id = 5,
             name = "Rockstar Games",
-            urlImage = "https://images.seeklogo.com/logo-png/11/1/rockstar-games-logo-png_seeklogo-119325.png"
+            urlImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEW7fzrNmCk90bSAMRCtfd17VSBlGsKC89ntw-bJz3Og&s=10"
         ),
 
         Studio(
