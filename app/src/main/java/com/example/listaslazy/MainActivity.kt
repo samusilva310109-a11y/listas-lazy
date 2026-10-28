@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.listaslazy.ui.theme.ListasLazyTheme
 import com.example.listaslazy.view.screen.GameScreen
+import com.example.listaslazy.viewModel.GameViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             ListasLazyTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    GameScreen(Modifier.padding(innerPadding).background(Color.White))
+                    val gameViewModel = GameViewModel()
+
+                    GameScreen(
+                        Modifier
+                            .padding(innerPadding)
+                            .background(Color.White)
+                        ,
+                        gameViewModel
+                    )
                 }
             }
         }

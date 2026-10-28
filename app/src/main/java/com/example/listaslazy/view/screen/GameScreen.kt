@@ -20,6 +20,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -32,20 +33,19 @@ import com.example.listaslazy.repository.getAllCategories
 import com.example.listaslazy.repository.getAllStudios
 import com.example.listaslazy.repository.getGamesByNameOrStudioOrCategory
 import com.example.listaslazy.repository.getStudios
-import com.example.listaslazy.view.components.CategorCard
+import com.example.listaslazy.view.components.CategoryCard
 import com.example.listaslazy.view.components.GameCard
 import com.example.listaslazy.view.components.StudioCard
+import com.example.listaslazy.viewModel.GameViewModel
 
 
 @Composable
-fun GameScreen(modifier: Modifier = Modifier) {
+fun GameScreen(modifier: Modifier = Modifier, gameViewModel: GameViewModel) {
     var search by remember {
         mutableStateOf("")
     }
 
-    var gamesList by remember {
-        mutableStateOf(getGamesByNameOrStudioOrCategory(""))
-    }
+    val gamesList by gameViewModel.gameList.observeAsState(getGamesByNameOrStudioOrCategory(""))
 
     var studiosList by remember {
         mutableStateOf(getAllStudios())
@@ -105,7 +105,7 @@ fun GameScreen(modifier: Modifier = Modifier) {
                 trailingIcon = {
                     IconButton(
                         onClick = {
-                            gamesList = getGamesByNameOrStudioOrCategory(search)
+                            gameViewModel.onGameListChanged(getGamesByNameOrStudioOrCategory(search))
                             studiosList = getStudios(search)
                         }
                     ) {
@@ -137,7 +137,7 @@ fun GameScreen(modifier: Modifier = Modifier) {
             item {
                 LazyRow(Modifier.padding(vertical = 10.dp,)) {
                     items(getAllCategories()) {
-                        CategorCard(category = it)
+                        CategoryCard(category = it, gameViewModel)
                     }
                 }
             }
@@ -159,7 +159,7 @@ fun GameScreen(modifier: Modifier = Modifier) {
             item {
                 LazyRow(Modifier.padding(bottom = 10.dp))  {
                     items(studiosList) {
-                        StudioCard(studio = it)
+                        StudioCard(studio = it, gameViewModel = gameViewModel)
                     }
                 }
             }

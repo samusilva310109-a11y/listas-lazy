@@ -18,13 +18,19 @@ import androidx.compose.ui.unit.dp
 import com.example.listaslazy.model.Game
 import com.example.listaslazy.model.Studio
 import com.example.listaslazy.repository.getGamesByNameOrStudioOrCategory
+import com.example.listaslazy.viewModel.GameViewModel
 
 @Composable
-fun StudioCard(modifier: Modifier = Modifier, studio: Studio) {
+fun StudioCard(modifier: Modifier = Modifier, studio: Studio, gameViewModel: GameViewModel) {
     Card(
         modifier = modifier
             .size(150.dp)
-            .padding(end = 4.dp)
+            .padding(end = 4.dp),
+        onClick = {
+            gameViewModel.onGameListChanged(
+                getGamesByNameOrStudioOrCategory(studio.name)
+            )
+        }
     ) {
         Column(
             modifier = Modifier.fillMaxSize().background(Color.LightGray),

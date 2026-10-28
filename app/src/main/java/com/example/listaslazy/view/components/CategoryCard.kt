@@ -18,16 +18,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.listaslazy.model.Category
+import com.example.listaslazy.model.Studio
+import com.example.listaslazy.repository.getGamesByNameOrStudioOrCategory
 import com.example.listaslazy.view.mapper.toPainter
+import com.example.listaslazy.viewModel.GameViewModel
 
 @Composable
-fun CategorCard(category: Category) {
+fun CategoryCard(category: Category, gameViewModel: GameViewModel) {
     val icon = category.icon.toPainter()
 
     Card(
         modifier = Modifier
             .size(90.dp)
-            .padding(end = 2.dp)
+            .padding(end = 2.dp),
+        onClick = {
+            gameViewModel.onGameListChanged(getGamesByNameOrStudioOrCategory(category.name))
+        }
     ) {
         Column(
             Modifier.background(Color.LightGray).fillMaxSize(),
