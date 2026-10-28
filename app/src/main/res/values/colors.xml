@@ -7,4 +7,34 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--ICON CATEGORY COLLORS-->
+    <color name="ic_action">#1976D2</color>
+    <color name="ic_rpg">#7B1FA2</color>
+    <color name="ic_aventura">#00796B</color>
+    <color name="ic_corrida">#D32F2F</color>
+    <color name="ic_esporte">#388E3C</color>
+    <color name="ic_terror">#AD1457</color>
+    <color name="ic_puzzle">#FFA000</color>
+    <color name="ic_plataforma">#EF6C00</color>
+    <color name="ic_estrategia">#455A64</color>
+    <color name="ic_simulacao">#616161</color>
+    <color name="ic_luta">#C62828</color>
+    <color name="ic_tiro">#303F9F</color>
+    <color name="ic_sobrevivencia">#689F38</color>
+
+    <!-- CARD CATEGORY COLORS -->
+    <color name="cd_action">#E3F2FD</color>
+    <color name="cd_rpg">#F3E5F5</color>
+    <color name="cd_aventura">#E0F2F1</color>
+    <color name="cd_corrida">#FFEBEE</color>
+    <color name="cd_esporte">#E8F5E9</color>
+    <color name="cd_terror">#FCE4EC</color>
+    <color name="cd_puzzle">#FFF8E1</color>
+    <color name="cd_plataforma">#FFF3E0</color>
+    <color name="cd_estrategia">#ECEFF1</color>
+    <color name="cd_simulacao">#F5F5F5</color>
+    <color name="cd_luta">#FFEBEE</color>
+    <color name="cd_tiro">#E8EAF6</color>
+    <color name="cd_sobrevivencia">#F1F8E9</color>
 </resources>

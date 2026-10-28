@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,12 +21,16 @@ import androidx.compose.ui.unit.sp
 import com.example.listaslazy.model.Category
 import com.example.listaslazy.model.Studio
 import com.example.listaslazy.repository.getGamesByNameOrStudioOrCategory
+import com.example.listaslazy.view.mapper.toCardColor
+import com.example.listaslazy.view.mapper.toColor
 import com.example.listaslazy.view.mapper.toPainter
 import com.example.listaslazy.viewModel.GameViewModel
 
 @Composable
 fun CategoryCard(category: Category, gameViewModel: GameViewModel) {
     val icon = category.icon.toPainter()
+    val iconColor = category.icon.toColor()
+    val cardColor = category.icon.toCardColor()
 
     Card(
         modifier = Modifier
@@ -33,17 +38,20 @@ fun CategoryCard(category: Category, gameViewModel: GameViewModel) {
             .padding(end = 2.dp),
         onClick = {
             gameViewModel.onGameListChanged(getGamesByNameOrStudioOrCategory(category.name))
-        }
+        },
+        colors = CardDefaults.cardColors(
+            cardColor
+        )
     ) {
         Column(
-            Modifier.background(Color.LightGray).fillMaxSize(),
+            Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Icon(
                 modifier = Modifier.size(25.dp),
                 painter = icon,
-                tint = Color.Black,
+                tint = iconColor,
                 contentDescription = category.name,
             )
 
