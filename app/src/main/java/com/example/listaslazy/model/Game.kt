@@ -5,5 +5,6 @@ data class Game(
     val title: String = "",
     val categories: List<Category>,
     val studio: Studio,
-    val releaseYear: Int = 0
+    val releaseYear: Int = 0,
+    val urlImage: String
 )
