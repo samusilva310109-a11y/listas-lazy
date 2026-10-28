@@ -1,6 +1,5 @@
 package com.example.listaslazy.view.screen
 
-import android.graphics.drawable.shapes.Shape
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,7 +29,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.listaslazy.repository.getAllCategories
-import com.example.listaslazy.repository.getGamesByStudio
+import com.example.listaslazy.repository.getAllStudios
+import com.example.listaslazy.repository.getGamesByNameOrStudioOrCategory
 import com.example.listaslazy.repository.getStudios
 import com.example.listaslazy.view.components.CategorCard
 import com.example.listaslazy.view.components.GameCard
@@ -39,16 +39,16 @@ import com.example.listaslazy.view.components.StudioCard
 
 @Composable
 fun GameScreen(modifier: Modifier = Modifier) {
-    var studio by remember {
+    var search by remember {
         mutableStateOf("")
     }
 
-    var gamesListByStudio by remember {
-        mutableStateOf(getGamesByStudio(""))
+    var gamesList by remember {
+        mutableStateOf(getGamesByNameOrStudioOrCategory(""))
     }
 
     var studiosList by remember {
-        mutableStateOf(getStudios(""))
+        mutableStateOf(getAllStudios())
     }
 
     var categories by remember {
@@ -80,9 +80,9 @@ fun GameScreen(modifier: Modifier = Modifier) {
             Spacer(Modifier.height(4.dp))
 
             OutlinedTextField(
-                value = studio,
+                value = search,
                 onValueChange = {
-                    studio = it
+                    search = it
                 },
                 modifier = Modifier.fillMaxWidth(),
                 label = {
@@ -105,8 +105,8 @@ fun GameScreen(modifier: Modifier = Modifier) {
                 trailingIcon = {
                     IconButton(
                         onClick = {
-                            gamesListByStudio = getGamesByStudio(studio)
-                            studiosList = getStudios(studio)
+                            gamesList = getGamesByNameOrStudioOrCategory(search)
+                            studiosList = getStudios(search)
                         }
                     ) {
                         Icon(
@@ -164,7 +164,7 @@ fun GameScreen(modifier: Modifier = Modifier) {
                 }
             }
 
-            items(gamesListByStudio) {
+            items(gamesList) {
                 GameCard(it)
             }
         }

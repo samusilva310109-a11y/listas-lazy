@@ -38,7 +38,7 @@ fun GameCard(game: Game) {
                 )
 
                 Text(
-                    text = game.studio,
+                    text = game.studio.name,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
                     color = Color.Black

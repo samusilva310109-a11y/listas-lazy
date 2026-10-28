@@ -1,10 +1,8 @@
 package com.example.listaslazy.repository
 
-import androidx.compose.ui.res.painterResource
 import com.example.listaslazy.model.Category
 import com.example.listaslazy.model.CategoryIcon
 import com.example.listaslazy.model.Game
-import com.example.listaslazy.model.Studio
 
 fun getAllGames(): List<Game> {
     return listOf(
@@ -15,7 +13,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 4, name = "Corrida", icon = CategoryIcon.RACING),
                 Category(id = 8, name = "Plataforma", icon = CategoryIcon.PLATFORM)
             ),
-            studio = "SEGA",
+            studio = getStudioByID(1),
             releaseYear = 1990
         ),
 
@@ -27,7 +25,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 13, name = "Sobrevivência", icon = CategoryIcon.SURVIVAL),
                 Category(id = 3, name = "Aventura", icon = CategoryIcon.ADVENTURE)
             ),
-            studio = "Mojang Studios",
+            studio = getStudioByID(2),
             releaseYear = 2011
         ),
 
@@ -39,7 +37,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 1, name = "RPG", icon = CategoryIcon.RPG),
                 Category(id = 3, name = "Aventura", icon = CategoryIcon.ADVENTURE)
             ),
-            studio = "Santa Monica Studio",
+            studio = getStudioByID(3),
             releaseYear = 2018
         ),
 
@@ -51,7 +49,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 2, name = "Ação", icon = CategoryIcon.ACTION),
                 Category(id = 8, name = "Plataforma", icon = CategoryIcon.PLATFORM)
             ),
-            studio = "Nintendo",
+            studio = getStudioByID(4),
             releaseYear = 2017
         ),
 
@@ -63,7 +61,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 3, name = "Aventura", icon = CategoryIcon.ADVENTURE),
                 Category(id = 12, name = "Tiro", icon = CategoryIcon.SHOOTER)
             ),
-            studio = "Rockstar Games",
+            studio = getStudioByID(5),
             releaseYear = 2013
         ),
 
@@ -74,7 +72,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 8, name = "Plataforma", icon = CategoryIcon.PLATFORM),
                 Category(id = 2, name = "Ação", icon = CategoryIcon.ACTION)
             ),
-            studio = "Nintendo",
+            studio = getStudioByID(4),
             releaseYear = 1985
         ),
 
@@ -86,7 +84,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 1, name = "RPG", icon = CategoryIcon.RPG),
                 Category(id = 3, name = "Aventura", icon = CategoryIcon.ADVENTURE)
             ),
-            studio = "Team Cherry",
+            studio = getStudioByID(6),
             releaseYear = 2017
         ),
 
@@ -98,7 +96,7 @@ fun getAllGames(): List<Game> {
                 Category(id = 1, name = "RPG", icon = CategoryIcon.RPG),
                 Category(id = 3, name = "Aventura", icon = CategoryIcon.ADVENTURE)
             ),
-            studio = "ConcernedApe",
+            studio = getStudioByID(7),
             releaseYear = 2016
         ),
 
@@ -109,23 +107,27 @@ fun getAllGames(): List<Game> {
                 Category(id = 8, name = "Plataforma", icon = CategoryIcon.PLATFORM),
                 Category(id = 2, name = "Ação", icon = CategoryIcon.ACTION)
             ),
-            studio = "Maddy Makes Games",
+            studio = getStudioByID(8),
             releaseYear = 2018
         )
     )
 }
 
-fun getGamesByStudio(studio: String): List<Game> {
+fun getGamesByStudio(studioName: String): List<Game> {
     return getAllGames().filter {
-        it.studio.startsWith(prefix = studio, ignoreCase = true)
+        it.studio.name.startsWith(prefix = studioName, ignoreCase = true)
     }
 }
 
-fun getStudios(studio: String): List<String> {
-    return getAllGames()
-        .map { it.studio }
-        .filter {
-            it.startsWith(prefix = studio, ignoreCase = true)
-        }
+fun getGamesByNameOrStudioOrCategory(
+    search: String
+): List<Game> {
+    return getAllGames().filter {
+        it.title.startsWith(search, ignoreCase = true) ||
+                it.studio.name.startsWith(search, ignoreCase = true) ||
+                it.categories.any {
+                    it.name.equals(search.trim(), ignoreCase = true)
+                }
+    }
 }
 
