@@ -35,7 +35,7 @@ fun CategoryCard(category: Category, gameViewModel: GameViewModel) {
     Card(
         modifier = Modifier
             .size(90.dp)
-            .padding(end = 2.dp),
+            .padding(end = 5.dp),
         onClick = {
             gameViewModel.onGameListChanged(getGamesByNameOrStudioOrCategory(category.name))
         },

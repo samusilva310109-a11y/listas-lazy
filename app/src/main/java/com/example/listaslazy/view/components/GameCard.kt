@@ -24,14 +24,17 @@ import com.example.listaslazy.R
 import com.example.listaslazy.model.Game
 
 @Composable
-fun GameCard(game: Game) {
+fun GameCard(game: Game, onClick: (Game) -> Unit) {
     Card(
         modifier =
             Modifier
                 .padding(end = 8.dp, bottom = 8.dp),
         colors = CardDefaults.cardColors(
             containerColor = colorResource(R.color.gameCard_color)
-        )
+        ),
+        onClick = {
+            onClick(game)
+        }
     ) {
         Row( modifier = Modifier
             .fillMaxWidth(),

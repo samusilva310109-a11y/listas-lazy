@@ -129,6 +129,20 @@ fun getGamesByStudio(studioName: String): List<Game> {
     }
 }
 
+fun getGameCategoryByIdGame(id: Long?): List<Category>{
+    return getAllGames()
+        .first(
+            {game -> game.id == id}
+        ).categories
+}
+
+fun getGameById(id: Long): Game?{
+    return  getAllGames()
+        .firstOrNull(
+            {game -> game.id == id}
+        )
+}
+
 fun getGamesByNameOrStudioOrCategory(
     search: String
 ): List<Game> {

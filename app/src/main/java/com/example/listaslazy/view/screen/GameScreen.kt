@@ -43,7 +43,11 @@ import com.example.listaslazy.viewModel.GameViewModel
 
 
 @Composable
-fun GameScreen(modifier: Modifier = Modifier, gameViewModel: GameViewModel) {
+fun GameScreen(
+    modifier: Modifier = Modifier,
+    gameViewModel: GameViewModel,
+    onGameClick: (Long) -> Unit
+) {
     var search by remember {
         mutableStateOf("")
     }
@@ -181,8 +185,12 @@ fun GameScreen(modifier: Modifier = Modifier, gameViewModel: GameViewModel) {
             }
 
             items(gamesList) {
-
-                GameCard(it)
+                GameCard(
+                    it,
+                    onClick = {
+                        onGameClick(it.id)
+                    }
+                )
             }
         }
     }
